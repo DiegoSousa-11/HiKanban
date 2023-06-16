@@ -1,0 +1,55 @@
+body {
+    background-color: var(--red);
+}
+
+form {
+    width: 45%;
+    padding: 2rem 3rem;
+
+    background-color: #FFF;
+    border-radius: 20px;
+}
+
+form > h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--red);
+
+    margin-bottom: 1.5rem;
+}
+
+form a {
+    cursor: pointer;
+
+    margin-top: -1rem;
+    margin-bottom: 1.8rem;
+    margin-left: auto;
+
+    text-decoration: underline;
+    color: var(--red);
+}
+
+form button {
+    width: 100%;
+}
+
+form p {
+    color: var(--text);
+    text-align: center;
+
+    margin-top: 1.5rem;
+}
+
+section h1 {
+    font-size: 5rem;
+    font-weight: 800;
+    color: #FFF;
+
+    margin-bottom: 3rem;
+    margin-left: 5rem;
+}
+
+section img {
+    width: 65%;
+}
