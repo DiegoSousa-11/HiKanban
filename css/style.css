@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --red: #F86161;
+}
+
+main {
+    display: flex;
+
+    width: 100vw;
+    height: 100vh;
+}
+
+main section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+    width: 50vw;
+}
+
+section > h2 {
+    text-align: center;
+    font-weight: 800;
+    font-size: 2.5rem;
+    color: #303030;
+
+    margin-bottom: 2rem;
+}
+
+section h2 span {
+    color: var(--red);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+}
+
+form label {
+    margin-left: .8rem;
+    color: #303030;
+}
+
+form div {
+    display: flex;
+    align-items: center;
+
+    border: 2px solid #00000050;
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    margin-bottom: 1.5rem;
+
+    width: 100%;
+}
+
+form .iconify {
+    margin: auto;
+    margin-left: .8rem;
+
+    font-size: 1.2rem;
+    color: #00000080;
+}
+
+form input {
+    padding: .8rem;
+    font-size: 1.1rem;
+
+    width: 100%;
+
+    outline: 0;
+    border: 0;
+}
+
+form button {
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 10px;
+
+    background-color: var(--red);
+    color: #FFF;
+
+    width: 60%;
+
+    margin: auto;
+    padding-block: 1rem;
+
+    font-size: 1rem;
+
+    transition: .5s;
+}
+
+form button:hover {
+    border-color: var(--red);
+    background-color: transparent;
+    color: var(--red);
+}
+
+.carousel {
+    display: flex;
+    align-items: center;
+
+    height: 95%;
+    width: 47.5vw;
+
+    overflow-x: hidden;
+}
+
+.carouselContainer {
+    display: flex;
+    height: 100%;
+
+    transition: .5s;
+}
+
+.carouselItem {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+
+    min-width: 47.5vw;
+    height: 100%;
+
+    padding: 3rem 4rem;
+
+    background-image: url(../assets/img/malte-helmhold-gucahh18Quo-unsplash.jpg);
+    background-size: cover;
+
+    border-radius: 30px;
+    border-top-right-radius: 0px;
+}
+
+.carouselItem h2 {
+    width: 80%;
+    font-size: 3rem;
+    color: #FFF;
+}
+
+.carouselItem p {
+    width: 80%;
+    font-size: 1.8rem;
+    color: #FFF;
+
+    margin-top: 1rem;
+    margin-bottom: 4rem;
+}
+
+.controllers {
+    position: absolute;
+    bottom: 4.5rem;
+
+    display: flex;
+    gap: .8rem;
+}
+
+.controllers > div {
+    cursor: pointer;
+
+    width: 1rem;
+    height: 1rem;
+
+    background-color: #FFF;
+    border-radius: 50%;
+
+    transition: .5s;
+}
+
+.controllers .currentPage {
+    width: 2rem;
+    border-radius: 10px;
+}
