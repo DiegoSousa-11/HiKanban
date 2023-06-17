@@ -1,0 +1,166 @@
+body {
+    display: flex;
+
+    height: 100vh;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    height: 100%;
+    width: 8vw;
+
+    padding: 2rem;
+
+    background-color: #FFF;
+    color: var(--red);
+}
+
+.menu > .iconify {
+    font-size: 4rem;
+}
+
+.menu nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+
+    height: 100%;
+
+    font-size: 2.5rem;
+    color: #B4B4B4;
+}
+
+.menu nav .iconify {
+    cursor: pointer;
+}
+
+nav .currentRoute {
+    color: var(--red);
+    background-color: #F8616140;
+    border-radius: 15px;
+
+    box-sizing: content-box;
+    padding: 0.5rem;
+}
+
+.workspace {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    background-color: #F0F0F0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 15vh;
+    width: 100%;
+
+    padding-inline: 5rem;
+}
+
+header > h1 {
+    font-weight: 900;
+    color: var(--text);
+}
+
+header > h1 span {
+    color: var(--red);
+}
+
+header > div {
+    display: flex;
+    align-items: center;
+
+    gap: .5rem;
+}
+
+header > div .iconify {
+    cursor: pointer;
+
+    padding: .5rem;
+    box-sizing: content-box;
+
+    background-color: #D8D8D8;
+    border-radius: 10px;
+
+    font-size: 1.2rem;
+}
+
+main {
+    flex: 1;
+    flex-direction: column;
+
+    width: auto;
+    height: auto;
+
+    padding-inline: 5rem;
+
+    color: var(--text);
+}
+
+.blocks {
+    flex: 1;
+
+    display: flex;
+    gap: 2rem;
+
+    margin-top: 1rem;
+}
+
+.blocks > div {
+    cursor: pointer;
+    user-select: none;
+    
+    display: flex;
+    align-items: end;
+
+    width: 20%;
+    height: 25%;
+
+    border-radius: 10px;
+    background-color: #61A6F8;
+}
+
+.blocks > div div {
+    border-radius: 0 0 10px 10px;
+    background-color: #FFF;
+
+    height: fit-content;
+    width: 100%;
+
+    padding: .8rem;
+    font-size: 1.1rem;
+}
+
+.addBlockButton {
+    cursor: pointer;
+
+    position: absolute;
+    right: 1.5rem;
+    bottom: 1.5rem;
+
+    box-sizing: content-box;
+    padding: 1rem;
+
+    border-radius: 50%;
+    background-color: #F86161;
+    color: #FFF;
+    opacity: .8;
+
+    font-size: 2rem;
+
+    transition: .5s;
+}
+
+.addBlockButton:hover {
+    transform: scale(1.05) rotate(225deg);
+}
