@@ -7,5 +7,12 @@ function loadControllers(quantityItems) {
 }
 
 function changeCarouselPage(newPage) {
+    const activeController = carouselControllers.querySelector('.currentPage');
+    const allControllers = carouselControllers.querySelectorAll('div');
+    const newActiveController = allControllers[newPage];
+
+    activeController.classList.remove('currentPage');
+    newActiveController.classList.add('currentPage')
+
     carouselContainer.style.marginLeft = -(newPage * 47.5) + 'vw';
 }
