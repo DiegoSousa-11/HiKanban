@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="style.css">
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <script src="../../js/tasks/dragAndDrop.js" defer></script>
     <title>HiKanban! | Blocos</title>
 </head>
 <body>
@@ -38,8 +39,16 @@
                     <h3>À fazer</h3>
 
                     <div class="tasksContainer">
-                        <div>
-                            <h4>Estudar listening</h4>
+                        <div draggable="true">
+                            <h4>Estudar listening a</h4>
+                        </div>
+
+                        <div draggable="true">
+                            <h4>Estudar listening b</h4>
+                        </div>
+
+                        <div draggable="true">
+                            <h4>Estudar listening c</h4>
                         </div>
                     </div>
 
@@ -52,6 +61,10 @@
                 <section>
                     <h3>Em andamento</h3>
 
+                    <div class="tasksContainer">
+                        
+                    </div>
+
                     <button>
                         <span class="iconify" data-icon="mingcute:add-fill"></span>
                         Adicionar tarefa
@@ -60,6 +73,10 @@
 
                 <section>
                     <h3>Finalizado</h3>
+
+                    <div class="tasksContainer">
+                        
+                    </div>
 
                     <button>
                         <span class="iconify" data-icon="mingcute:add-fill"></span>
