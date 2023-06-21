@@ -1,7 +1,7 @@
 const carouselControllers = document.getElementById('carouselControllers');
 
 function loadControllers(quantityItems) {
-    for(let i = 0; i < quantityItems; i++) {
+	for(let i = 0; i < quantityItems; i++) {
         carouselControllers.innerHTML += `${i === 0 ? `<div onclick="changeCarouselPage(${i})" class="currentPage"></div>` : `<div onclick="changeCarouselPage(${i})"></div>`}`;
     }
 }
