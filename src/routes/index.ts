@@ -1,7 +1,7 @@
-import express from 'express';
+import { Router } from 'express';
 import { Request, Response } from 'express';
 
-export const router = express.Router();
+export const router = Router();
 
 router.get('/', (request: Request, response: Response) => {
 	response.render('index', { title: 'Express' });
