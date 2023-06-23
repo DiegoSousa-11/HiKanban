@@ -7,6 +7,8 @@
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
     <script src="js/carousel/carouselController.js" defer></script>
     <script src="js/carousel/loadCarousel.js" defer></script>
+	<script src="js/user/register.js" defer></script>
+	<script src="js/utils/toast.js" defer></script>
     <title>HiKanban! | Cadastro</title>
 </head>
 <body>
@@ -18,32 +20,32 @@
                 Hi<span>Kanban</span>!
             </h2>
             
-            <form action="">
+            <form>
                 <label for="">Nome</label>
                 <div>
                     <span class="iconify" data-icon="tabler:user"></span>
-                    <input type="text" placeholder="Nome">
+                    <input name="name" type="text" placeholder="Nome">
                 </div>
 
                 <label for="">E-mail</label>
                 <div>
                     <span class="iconify" data-icon="ic:outline-email"></span>
-                    <input type="email" placeholder="E-mail">
+                    <input name="email" type="email" placeholder="E-mail">
                 </div>
 
                 <label for="">Senha</label>
                 <div>
                     <span class="iconify" data-icon="mdi:password"></span>
-                    <input type="password" placeholder="••••••••">
+                    <input name="password" type="password" placeholder="••••••••">
                 </div>
 
                 <label for="">Confirme sua senha</label>
                 <div>
                     <span class="iconify" data-icon="mdi:password"></span>
-                    <input type="password" placeholder="••••••••">
+                    <input name="confirmPassword" type="password" placeholder="••••••••">
                 </div>
 
-                <button>Cadastre-se</button>
+                <button onclick="registerUser()">Cadastre-se</button>
             </form>
         </section>
 
