@@ -14,17 +14,23 @@ async function registerUser() {
 
 function inputsAreValid(name, email, password, confirmPassword) {
 	if(!name || !email || !password || !confirmPassword) {
-		createToast('Preencha todos os campos!', 'typcn:warning', '#E7584F');
+		displayToast('Preencha todos os campos!');
 		return false;
 	}
-	else if (password !== confirmPassword) {
-		createToast('As senhas não coincidem!', 'typcn:warning', '#E7584F');
+
+	if (password !== confirmPassword) {
+		displayToast('As senhas não coincidem!');
 		return false;
 	}
-	else if (password.length < 8) {
-		createToast('Sua senha deve ter pelo menos 8 caracteres!', 'typcn:warning', '#E7584F');
+	
+	if (password.length < 8) {
+		displayToast('Sua senha deve ter pelo menos 8 caracteres!');
 		return false;
 	}
-	else 
-		return true;
+	
+	return true;
+}
+
+function displayToast(message) {
+	createToast(message, 'typcn:warning', '#E7584F');
 }
