@@ -8,7 +8,28 @@ async function registerUser() {
 	const valuesAreValid = inputsAreValid(name.value, email.value, password.value, confirmPassword.value);
 
 	if(valuesAreValid) {
-		alert('Valido!');
+		const user = {
+			name: name.value,
+			email: email.value,
+			password: password.value
+		}
+
+		const response = await fetch('/user', { 
+			method: 'POST', 
+			body: JSON.stringify(user),
+			headers: {
+				'Content-Type': 'application/json'
+			},
+		});
+
+		const data = await response.json();
+
+		if(response.ok)
+			createToast('Usuário cadastrado com sucesso!', 'fe:check', '#006432');
+		else if (data.code === 'ER_DUP_ENTRY')
+			displayToast('Esse email já está cadastrado no sistema!');
+		else 
+			displayToast('Não foi possível efetuar o cadastro!');
 	}
 }
 
