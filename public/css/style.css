@@ -72,7 +72,7 @@ form .iconify {
     margin: auto;
     margin-left: .8rem;
 
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: #00000080;
 }
 
@@ -80,10 +80,17 @@ form input {
     padding: .8rem;
     font-size: 1.1rem;
 
+	color: var(--text);
+
     width: 100%;
 
     outline: 0;
     border: 0;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 35px #FFF inset;
+    -webkit-text-fill-color: var(--text);
 }
 
 form button {
@@ -183,5 +190,3 @@ form button:hover {
     width: 2rem;
     border-radius: 10px;
 }
-
-

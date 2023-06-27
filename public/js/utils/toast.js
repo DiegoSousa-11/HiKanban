@@ -1,4 +1,4 @@
-window.addEventListener('load', () => document.head.innerHTML += '<link rel="stylesheet" href="css/toastStyle.css">')
+window.addEventListener('load', () => document.head.innerHTML += `<link rel="stylesheet" href="${window.location.origin}/css/toastStyle.css">`)
 
 function createToast(text, icon, color) {
 	if(document.getElementById('toast'))

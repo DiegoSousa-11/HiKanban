@@ -13,6 +13,12 @@ export async function authenticateUserController(request: Request, response: Res
 
 		const user = await authenticateUser({ email, password });
 
+		const userExists = Array.isArray(user) && user.length;
+
+		if(!userExists) {
+			return response.status(404).json({ message: 'User not found' });
+		}
+
 		response.status(200).json(user);
 	} catch (error) {
 		response.status(500).json(error);
