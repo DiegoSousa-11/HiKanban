@@ -34,8 +34,7 @@ async function login() {
 
 		setUserDataCookie(user);
 
-		let message = `Bem vindo de volta, ${user.name}!`;
-		createToast(message, 'fe:check', '#006432');
+		window.location.assign('../Workspace');
 	}
 }
 
