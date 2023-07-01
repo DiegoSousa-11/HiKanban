@@ -164,3 +164,130 @@ main {
 .addBlockButton:hover {
     transform: scale(1.05) rotate(225deg);
 }
+
+.modal {
+	display: none;
+
+	position: absolute;
+
+	width: 100vw;
+	height: 100vh;
+}
+
+.modal .overlay {
+	z-index: 2;
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	background-color: #00000035;
+}
+
+.modal .modalContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	padding: 3rem 4rem;
+	background-color: #FFF;
+	border-radius: 15px;
+}
+
+#closeModalButton {
+	cursor: pointer;
+	position: relative;
+	margin-left: auto;
+	right: -2rem;
+	top: -.8rem;
+
+	margin-bottom: -1.5rem;
+
+	font-size: 2rem;
+}
+
+.modalContainer form {
+	width: 100%;
+
+	margin-top: 2rem;
+}
+
+.modalContainer {
+	color: var(--red);
+}
+
+.modalContainer .colorPicker, .isFavorite {
+	border: 0;
+	gap: .8rem;
+}
+
+.colorPicker label, .isFavorite label {
+	margin-left: 0;
+}
+
+.colorPicker input {
+	cursor: pointer;
+
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background-color: transparent;
+
+	padding: 0;
+	width: 2.3rem;
+	height: 2.5rem;
+
+	border: 0;
+}
+
+.colorPicker input::-webkit-color-swatch {
+	border-radius: 50%;
+	border: 0;
+}
+
+.colorPicker input::-moz-color-swatch {
+	border-radius: 50%;
+	border: 0;
+}
+
+.isFavorite input {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+
+	width: 1.5rem;
+	height: 1.5rem;
+
+	-webkit-appearance: none;
+
+	background-color: #D9D9D9;
+	border-radius: 5px;
+
+	transition: .5s;
+}
+
+.isFavorite input::after {
+	flex: 1;
+	content: url('https://api.iconify.design/fe/check.svg?color=white&width=20&height=25');
+	color: #FFF;
+
+	width: 1.5rem;
+	height: 1.5rem;
+	
+	transform: scale(0);
+	transition: .5s;
+}
+
+.isFavorite input:checked::after {
+	transform: scale(1);
+}
+
+.isFavorite input:checked {
+	background-color: var(--red);
+}
+
+form button {
+	padding: .8rem;
+	margin-top: 1rem;
+}
