@@ -27,11 +27,11 @@ async function createBlock() {
 			}
 		});
 
-		console.log(response);
-
-		if(response.ok)
+		if(response.ok) {
 			createToast('Bloco cadastrado com sucesso!', 'fe:check', '#006432');
-		else 
+			closeModal();
+			getUserBlocks();
+		} else 
 			showErrorToast('Não foi possível efetuar o cadastro do bloco!');
 	}
 }
