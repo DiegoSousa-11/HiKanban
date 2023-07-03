@@ -2,9 +2,6 @@ const addBlockButton = document.getElementById('addBlockButton');
 const createBlockModal = document.getElementById('createBlockModal');
 const closeModalButton = document.getElementById('closeModalButton');
 
-console.log(addBlockButton);
-console.log(closeModalButton);
-
 function openModal() {
 	createBlockModal.style.display = 'flex';
 }

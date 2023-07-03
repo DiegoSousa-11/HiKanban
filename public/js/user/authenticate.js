@@ -25,3 +25,9 @@ function getCookie(name) {
 function fillUserName(user) {
 	textUserName.innerHTML = user.name;
 }
+
+function getUserId() {
+	const user = getCookie('user') && JSON.parse(getCookie('user'));
+
+	return user.idUser;
+}

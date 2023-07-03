@@ -8,6 +8,8 @@
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
 	<script src="../js/user/authenticate.js" defer></script>
 	<script src="../js/blocks/createBlockModalController.js" defer></script>
+	<script src="../js/utils/toast.js" defer></script>
+	<script src="../js/blocks/createBlock.js" defer></script>
     <title>HiKanban! | Área de trabalho</title>
 </head>
 <body>
@@ -67,15 +69,15 @@
 	
 					<div class="colorPicker">
 						<label>Cor do bloco</label>
-						<input type="color" value="#F86161" name="" id="">
+						<input name="colorPicker" type="color" value="#F86161">
 					</div>
 	
 					<div class="isFavorite">
 						<label>Adicionar aos favoritos</label>
-						<input type="checkbox" name="" id="">
+						<input name="isFavorite" type="checkbox">
 					</div>
 	
-					<button>Criar bloco</button>
+					<button id="createBlockButton">Criar bloco</button>
 				</form>
 			</div>
 		</div>

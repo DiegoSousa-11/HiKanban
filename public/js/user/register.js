@@ -54,7 +54,3 @@ function inputsAreValid(name, email, password, confirmPassword) {
 	
 	return true;
 }
-
-function showErrorToast(message) {
-	createToast(message, 'typcn:warning', '#E7584F');
-}

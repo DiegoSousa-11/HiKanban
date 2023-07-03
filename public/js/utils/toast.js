@@ -41,3 +41,7 @@ function removeToast() {
     clearInterval(interval);
     progress = 0;
 }
+
+function showErrorToast(message) {
+	createToast(message, 'typcn:warning', '#E7584F');
+}
