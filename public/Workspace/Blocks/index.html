@@ -9,6 +9,7 @@
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
     <script src="../../js/tasks/dragAndDrop.js" defer></script>
 	<script src="../../js/user/authenticate.js" defer></script>
+	<script src="../../js/tasks/createTaskModalController.js" defer></script>
     <title>HiKanban! | Blocos</title>
 </head>
 <body>
@@ -36,7 +37,7 @@
             <h1>Estudo inglês <span class="iconify" data-icon="ic:round-star-border"></span></h1>
 
             <div class="columns">
-                <section>
+                <section onclick="openModal('TO_DO')">
                     <h3>À fazer</h3>
 
                     <div class="tasksContainer">
@@ -66,7 +67,7 @@
                         
                     </div>
 
-                    <button>
+                    <button onclick="openModal('IN_PROGRESS')">
                         <span class="iconify" data-icon="mingcute:add-fill"></span>
                         Adicionar tarefa
                     </button>
@@ -79,7 +80,7 @@
                         
                     </div>
 
-                    <button>
+                    <button onclick="openModal('FINISHED')">
                         <span class="iconify" data-icon="mingcute:add-fill"></span>
                         Adicionar tarefa
                     </button>
@@ -87,5 +88,38 @@
             </div>
         </main>
     </div>
+
+	<div id="createTaskModal" class="modal">
+		<div class="overlay">
+			<div class="modalContainer">
+				<div id="closeModalButton">
+					<span class="iconify" data-icon="mingcute:close-fill"></span>
+				</div>
+	
+				<h1>Crie blocos</h1>
+	
+				<form>
+	
+					<label>Nome</label>
+					<div>
+						<span class="iconify" data-icon="ph:kanban"></span>
+						<input name="name" type="text" placeholder="Nome do bloco">
+					</div>
+	
+					<div class="colorPicker">
+						<label>Cor do bloco</label>
+						<input name="colorPicker" type="color" value="#F86161">
+					</div>
+	
+					<div class="isFavorite">
+						<label>Adicionar aos favoritos</label>
+						<input name="isFavorite" type="checkbox">
+					</div>
+	
+					<button>Criar bloco</button>
+				</form>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
