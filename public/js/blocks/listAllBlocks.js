@@ -10,7 +10,9 @@ async function getUserBlocks() {
 	const response = await fetch(`/block/listAllBlocks/${userId}`);
 	const data = await response.json();
 
-	displayAllUserBlocks(data);
+	if(data.length > 0) {
+		displayAllUserBlocks(data);
+	} 
 }
 
 function displayAllUserBlocks(data) {
