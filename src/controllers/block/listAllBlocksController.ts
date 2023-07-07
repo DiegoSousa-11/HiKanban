@@ -7,9 +7,9 @@ export async function listAllBlocksController(request: Request, response: Respon
 
 		const blocks = await listAllBlocks(parseInt(fkUser));
 
-		response.status(201).json(blocks);
+		response.status(200).json(blocks);
 	} catch (error) {
 		console.log(error);
-		throw error;
+		response.status(500).json(error);
 	}
 }

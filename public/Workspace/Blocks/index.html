@@ -8,9 +8,12 @@
     <link rel="stylesheet" href="style.css">
 	<link rel="shortcut icon" href="../../assets/img/LogoHiKanban.svg" type="image/x-icon">
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
-    <script src="../../js/tasks/dragAndDrop.js" defer></script>
 	<script src="../../js/user/authenticate.js" defer></script>
+	<script src="../../js/utils/toast.js" defer></script>
+	<script src="../../js/tasks/listTasks.js" defer></script>
+	<script src="../../js/tasks/createTask.js" defer></script>
 	<script src="../../js/tasks/createTaskModalController.js" defer></script>
+    <script src="../../js/tasks/dragAndDrop.js" defer></script>
     <title>HiKanban! | Blocos</title>
 </head>
 <body>
@@ -40,30 +43,20 @@
             <h1>Estudo inglês <span class="iconify" data-icon="ic:round-star-border"></span></h1>
 
             <div class="columns">
-                <section onclick="openModal('TO_DO')">
+                <section id="TO_DO">
                     <h3>À fazer</h3>
 
                     <div class="tasksContainer">
-                        <div draggable="true">
-                            <h4>Estudar listening a</h4>
-                        </div>
-
-                        <div draggable="true">
-                            <h4>Estudar listening b</h4>
-                        </div>
-
-                        <div draggable="true">
-                            <h4>Estudar listening c</h4>
-                        </div>
+						
                     </div>
 
-                    <button>
+                    <button onclick="openModal('TO_DO')">
                         <span class="iconify" data-icon="mingcute:add-fill"></span>
                         Adicionar tarefa
                     </button>
                 </section>
 
-                <section>
+                <section id="IN_PROGRESS">
                     <h3>Em andamento</h3>
 
                     <div class="tasksContainer">
@@ -76,7 +69,7 @@
                     </button>
                 </section>
 
-                <section>
+                <section id="FINISHED">
                     <h3>Finalizado</h3>
 
                     <div class="tasksContainer">
@@ -99,27 +92,27 @@
 					<span class="iconify" data-icon="mingcute:close-fill"></span>
 				</div>
 	
-				<h1>Crie blocos</h1>
+				<h1></h1>
 	
 				<form>
 	
 					<label>Nome</label>
 					<div>
-						<span class="iconify" data-icon="ph:kanban"></span>
-						<input name="name" type="text" placeholder="Nome do bloco">
+						<span class="iconify" data-icon="mingcute:task-line"></span>
+						<input name="name" type="text" placeholder="Nome da tarefa">
 					</div>
 	
-					<div class="colorPicker">
-						<label>Cor do bloco</label>
-						<input name="colorPicker" type="color" value="#F86161">
+					<div class="description">
+						<label>Descrição</label>
+						<textarea name="description" placeholder="Descrição" rows="5"></textarea>
 					</div>
 	
-					<div class="isFavorite">
-						<label>Adicionar aos favoritos</label>
-						<input name="isFavorite" type="checkbox">
+					<div class="endDate">
+						<label>Data de término</label>
+						<input name="endDate" type="datetime-local">
 					</div>
 	
-					<button>Criar bloco</button>
+					<button>Criar tarefa</button>
 				</form>
 			</div>
 		</div>

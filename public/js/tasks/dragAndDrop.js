@@ -1,54 +1,56 @@
-const allTasks = document.querySelectorAll('.tasksContainer div');
-const columns = document.querySelectorAll('.columns section');
-
 var draggedItem;
 
-allTasks.forEach((task) => {
-    task.addEventListener('dragstart', (event) => {
-        event.dataTransfer.setDragImage(new Image(), 0, 0);
+function generateDragAndDrop() {
+	const allTasks = document.querySelectorAll('.tasksContainer div');
+	const columns = document.querySelectorAll('.columns section');
 
-        draggedItem = task;
-    });
-    
-    task.addEventListener('drag', (event) => {
-        let x = event.layerX;
-        let y = event.layerY;
+	allTasks.forEach((task) => {
+		task.addEventListener('dragstart', (event) => {
+			event.dataTransfer.setDragImage(new Image(), 0, 0);
 
-        draggedItem.style.transform = `translate(${x}px, ${y}px)`;
-    });
+			draggedItem = task;
+		});
+		
+		task.addEventListener('drag', (event) => {
+			let x = event.layerX;
+			let y = event.layerY;
 
-    task.addEventListener('dragend', (event) => {
-        draggedItem.style.transform = '';
-        draggedItem = null;
-    });
+			draggedItem.style.transform = `translate(${x}px, ${y}px)`;
+		});
 
-    task.addEventListener('dragover', (event) => {
-        event.preventDefault();
+		task.addEventListener('dragend', (event) => {
+			draggedItem.style.transform = '';
+			draggedItem = null;
+		});
 
-        if (task !== draggedItem) {
-            const rect = task.getBoundingClientRect();
-            const taskCenterY = rect.top + rect.height / 2;
+		task.addEventListener('dragover', (event) => {
+			event.preventDefault();
 
-            if (event.clientY < taskCenterY) {
-                task.insertAdjacentElement('beforebegin', draggedItem);
-            } else {
-                task.parentElement.insertBefore(draggedItem, task.nextSibling);
-            }
-        }
-    });
-});
+			if (task !== draggedItem) {
+				const rect = task.getBoundingClientRect();
+				const taskCenterY = rect.top + rect.height / 2;
 
-columns.forEach((item) => {
-    item.addEventListener('dragover', (event) => {
-        event.preventDefault();
+				if (event.clientY < taskCenterY) {
+					task.insertAdjacentElement('beforebegin', draggedItem);
+				} else {
+					task.parentElement.insertBefore(draggedItem, task.nextSibling);
+				}
+			}
+		});
+	});
 
-        const draggedItemContainer = draggedItem.parentElement;
-        const currentContainer = item.querySelector('.tasksContainer');
+	columns.forEach((item) => {
+		item.addEventListener('dragover', (event) => {
+			event.preventDefault();
 
-        if(draggedItemContainer != currentContainer) {
-            event.preventDefault();
+			const draggedItemContainer = draggedItem.parentElement;
+			const currentContainer = item.querySelector('.tasksContainer');
 
-            item.querySelector('.tasksContainer').appendChild(draggedItem);
-        }
-    });
-});
+			if(draggedItemContainer != currentContainer) {
+				event.preventDefault();
+
+				item.querySelector('.tasksContainer').appendChild(draggedItem);
+			}
+		});
+	});
+}

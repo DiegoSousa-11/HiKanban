@@ -11,6 +11,8 @@ function openModal(column) {
 		createTaskModal.querySelector('h1').innerHTML = 'Adicionar tarefa em andamento';
 	else 
 		createTaskModal.querySelector('h1').innerHTML = 'Adicionar tarefa já finalizada';
+
+	createTaskModal.querySelector('button').addEventListener('click', () => createTask(column));
 }
 
 function closeModal() {

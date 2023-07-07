@@ -13,6 +13,23 @@
     --text: #303030;
 }
 
+::-webkit-scrollbar {
+    width: 8px;
+    height: 10px;
+}
+  
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--red);
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+}
+
 main {
     display: flex;
 
