@@ -1,4 +1,6 @@
 var draggedItem;
+var draggedItemClone;
+var draggedItemPosition = { x: null, y: null };
 
 function generateDragAndDrop() {
 	const allTasks = document.querySelectorAll('.tasksContainer div');
@@ -9,17 +11,36 @@ function generateDragAndDrop() {
 			event.dataTransfer.setDragImage(new Image(), 0, 0);
 
 			draggedItem = task;
+			
+			draggedItemClone = task.cloneNode(true);
+			task.parentNode.appendChild(draggedItemClone);
+			draggedItemClone.style.position = 'absolute';
+			draggedItemClone.style.width = `${task.clientWidth}px`;
+
+			task.classList.add('draggable');
+			
+			draggedItemPosition.x = task.offsetLeft;
+			draggedItemPosition.y = columns[0].offsetTop + 50;
+
+			let x = event.clientX - draggedItemPosition.x;
+			let y = event.clientY - draggedItemPosition.y;
+
+			draggedItemClone.style.transform = `translate(${x}px, ${y}px)`;
 		});
 		
 		task.addEventListener('drag', (event) => {
-			let x = event.layerX;
-			let y = event.layerY;
-
-			draggedItem.style.transform = `translate(${x}px, ${y}px)`;
+			let x = event.clientX - draggedItemPosition.x;
+			let y = event.clientY - draggedItemPosition.y;
+			
+			draggedItemClone.style.transform = `translate(${x}px, ${y}px)`;
 		});
 
 		task.addEventListener('dragend', (event) => {
-			draggedItem.style.transform = '';
+			task.classList.remove('draggable');
+			draggedItemClone.remove();
+
+			draggedItemPosition = { x: null, y: null };
+			draggedItemClone = null;
 			draggedItem = null;
 		});
 

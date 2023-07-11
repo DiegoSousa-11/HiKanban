@@ -67,6 +67,7 @@ section > button:hover {
     
     width: 100%;
     margin-top: 1rem;
+	overflow: auto;
 }
 
 .tasksContainer > div {
@@ -79,6 +80,17 @@ section > button:hover {
     background-color: #FFF;
 
     padding: 1rem;
+}
+
+.tasksContainer .draggable {
+	outline: 2px dashed var(--text);
+    outline-offset: -3px;
+
+	background-color: transparent;
+}
+
+.draggable h4 {
+	visibility: hidden;
 }
 
 .description, .endDate {
