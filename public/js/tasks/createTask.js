@@ -28,10 +28,20 @@ async function createTask(column) {
 			closeModal();
 			createToast('Tarefa criada com sucesso!', 'fe:check', '#006432');
 			listAllTasksByBlockId();
+			clearFormData();
 		} else {
 			showErrorToast('Não foi possível criar a tarefa!')
 		}
+
 	}
+}
+
+function clearFormData() {
+	const fields = form.querySelectorAll('input');
+
+	fields.forEach((field) => {
+		field.value = '';
+	});
 }
 
 function checkTaskName(name) {
