@@ -2,7 +2,7 @@ import { query } from '../../database';
 
 export async function listAllTasksByBlockId(blockId: number) {
 	try {
-		const response = await query(`SELECT * FROM Task WHERE fkBlock = ${blockId}`);
+		const response = await query(`SELECT * FROM Task WHERE fkBlock = ${blockId} ORDER BY positionInColumn`);
 
 		return response;
 	} catch (error) {

@@ -1,19 +1,22 @@
-var draggedItem;
-var draggedItemClone;
-var draggedItemPosition = { x: null, y: null };
-
 function generateDragAndDrop() {
 	const allTasks = document.querySelectorAll('.tasksContainer div');
 	const columns = document.querySelectorAll('.columns section');
+
+	var draggedItem;
+	var draggedItemClone;
+	var draggedItemPosition = { x: null, y: null };
+	var itemColumn;
 
 	allTasks.forEach((task) => {
 		task.addEventListener('dragstart', (event) => {
 			event.dataTransfer.setDragImage(new Image(), 0, 0);
 
 			draggedItem = task;
-			
+			itemColumn = task.closest('section').id;	
 			draggedItemClone = task.cloneNode(true);
+
 			task.parentNode.appendChild(draggedItemClone);
+
 			draggedItemClone.style.position = 'absolute';
 			draggedItemClone.style.width = `${task.clientWidth}px`;
 
@@ -39,9 +42,21 @@ function generateDragAndDrop() {
 			task.classList.remove('draggable');
 			draggedItemClone.remove();
 
+			const currentColumn = task.closest('section').id;
+
+			const columnArray = Array.from(task.parentNode.children);
+			const taskPosition = columnArray.indexOf(task);
+
+			if(itemColumn === currentColumn) {
+				updateTasksOrder(task.id, taskPosition);
+			} else {
+				updateTaskColumn(task.id, taskPosition, currentColumn);
+			}
+
 			draggedItemPosition = { x: null, y: null };
 			draggedItemClone = null;
 			draggedItem = null;
+			itemColumn = null;
 		});
 
 		task.addEventListener('dragover', (event) => {

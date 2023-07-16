@@ -3,6 +3,7 @@ import { router } from './routes';
 import path from 'path';
 import { userRoutes } from './routes/user';
 import { blockRoutes } from './routes/block';
+import { taskRoutes } from './routes/task';
 
 const app = express();
 
@@ -13,5 +14,6 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use(router);
 app.use('/user', userRoutes);
 app.use('/block', blockRoutes);
+app.use('/task', taskRoutes);
 
 app.listen(3000, () => console.log('Server is running in 3000 port'));
