@@ -2,10 +2,7 @@ const TO_DO_COLUMN = document.getElementById('TO_DO').querySelector('.tasksConta
 const IN_PROGRESS_COLUMN = document.getElementById('IN_PROGRESS').querySelector('.tasksContainer');
 const FINISHED_COLUMN = document.getElementById('FINISHED').querySelector('.tasksContainer');
 
-const fkBlock = window.location.search.replace('?idBlock:', '');
 let tasks;
-
-window.addEventListener('load', () => listAllTasksByBlockId());
 
 async function listAllTasksByBlockId() {
 	const response = await fetch(`/block/${fkBlock}/listAllTasks`);

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
 	<link rel="shortcut icon" href="../../assets/img/LogoHiKanban.svg" type="image/x-icon">
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+	<script src="../../js/blocks/loadBlockData.js" defer></script>
 	<script src="../../js/user/authenticate.js" defer></script>
 	<script src="../../js/utils/toast.js" defer></script>
 	<script src="../../js/tasks/listTasks.js" defer></script>
@@ -41,7 +42,7 @@
         </header>
 
         <main>
-            <h1>Estudo inglês <span class="iconify" data-icon="ic:round-star-border"></span></h1>
+            <h1 id="blockHeader">-</h1>
 
             <div class="columns">
                 <section id="TO_DO">

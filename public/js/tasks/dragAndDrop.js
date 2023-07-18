@@ -1,8 +1,9 @@
+let draggedItem;
+
 function generateDragAndDrop() {
 	const allTasks = document.querySelectorAll('.tasksContainer div');
 	const columns = document.querySelectorAll('.columns section');
 
-	var draggedItem;
 	var draggedItemClone;
 	var draggedItemPosition = { x: null, y: null };
 	var itemColumn;
