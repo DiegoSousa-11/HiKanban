@@ -220,7 +220,7 @@ main {
 	border-radius: 15px;
 }
 
-#closeModalButton {
+#closeModalButton, #closeTaskModalButton {
 	cursor: pointer;
 	position: relative;
 	margin-left: auto;

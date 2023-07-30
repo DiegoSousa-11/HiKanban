@@ -25,7 +25,7 @@ async function createTask(column) {
 		});
 
 		if(response.ok) {
-			closeModal();
+			closeCreateTaskModal();
 			createToast('Tarefa criada com sucesso!', 'fe:check', '#006432');
 			listAllTasksByBlockId();
 			clearFormData();

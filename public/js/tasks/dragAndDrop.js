@@ -52,6 +52,11 @@ function generateDragAndDrop() {
 				updateTasksOrder(task.id, taskPosition);
 			} else {
 				updateTaskColumn(task.id, taskPosition, currentColumn);
+				tasks.map((item, index) => {
+					if(item.idTask == task.id) {
+						tasks[index].status = currentColumn;
+					}
+				});
 			}
 
 			draggedItemPosition = { x: null, y: null };

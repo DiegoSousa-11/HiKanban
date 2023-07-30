@@ -18,6 +18,15 @@ CONSTRAINT fkUserBlock FOREIGN KEY (fkUser) REFERENCES User(idUser),
 CONSTRAINT chkColor CHECK (color LIKE '#%')
 );
 
+ALTER TABLE Block DROP CONSTRAINT fkUserBlock;
+ALTER TABLE Task DROP CONSTRAINT fkUserTask;
+ALTER TABLE Block MODIFY COLUMN fkUser BIGINT;
+ALTER TABLE Task MODIFY COLUMN fkUser BIGINT;
+ALTER TABLE User MODIFY COLUMN idUser BIGINT;
+
+ALTER TABLE Block ADD CONSTRAINT fkUserBlock FOREIGN KEY (fkUser) REFERENCES User(idUser);
+ALTER TABLE Task ADD CONSTRAINT fkUserTask FOREIGN KEY (fkUser) REFERENCES User(idUser);
+
 CREATE TABLE Task (
 idTask INT PRIMARY KEY AUTO_INCREMENT,
 name VARCHAR(45) NOT NULL,
@@ -33,11 +42,11 @@ CONSTRAINT chkStatus CHECK (status IN('TO_DO', 'IN_PROGRESS', 'FINISHED'))
 );
 
 DELIMITER //
-CREATE FUNCTION getNextTaskPosition(taskStatus VARCHAR(12)) RETURNS INT
+CREATE FUNCTION getNextTaskPosition(taskStatus VARCHAR(12), idBlock INT) RETURNS INT
 READS SQL DATA
 BEGIN
     DECLARE position INT;
-    SET position = (SELECT MAX(positionInColumn) + 1 FROM Task WHERE status = taskStatus);
+    SET position = (SELECT MAX(positionInColumn) + 1 FROM Task WHERE status = taskStatus AND fkBlock = idBlock);
     
     IF position IS NULL THEN 
 		SET position = 0;
@@ -52,16 +61,18 @@ CREATE PROCEDURE updateTasksOrder(targetTaskId INT, newPosition INT)
 BEGIN
 	DECLARE currentPosition INT;
     DECLARE taskStatus VARCHAR(12);
+    DECLARE idBlock INT;
     
     SET currentPosition = (SELECT positionInColumn FROM Task WHERE idTask = targetTaskId);
     SET taskStatus = (SELECT status FROM Task WHERE idTask = targetTaskId);
+    SET idBlock = (SELECT fkBlock FROM Task WHERE idTask = targetTaskId);
 	
 	UPDATE Task SET positionInColumn = newPosition WHERE idTask = targetTaskId;
     
     CASE WHEN newPosition > currentPosition THEN -- Going down the task
-		UPDATE Task SET positionInColumn = positionInColumn - 1 WHERE idTask != targetTaskId AND positionInColumn <= newPosition AND positionInColumn > currentPosition AND status = taskStatus;
+		UPDATE Task SET positionInColumn = positionInColumn - 1 WHERE idTask != targetTaskId AND positionInColumn <= newPosition AND positionInColumn > currentPosition AND status = taskStatus AND fkBlock = idBlock;
 	ELSE -- Going up the task
-		UPDATE Task SET positionInColumn = positionInColumn + 1 WHERE idTask != targetTaskId AND positionInColumn >= newPosition AND positionInColumn < currentPosition AND status = taskStatus;
+		UPDATE Task SET positionInColumn = positionInColumn + 1 WHERE idTask != targetTaskId AND positionInColumn >= newPosition AND positionInColumn < currentPosition AND status = taskStatus AND fkBlock = idBlock;
 	END CASE;
 END
 // DELIMITER ;
@@ -71,16 +82,20 @@ CREATE PROCEDURE updateTaskStatus(targetTaskId INT, positionInNewColumn INT, new
 BEGIN
 	DECLARE currentPosition INT;
     DECLARE previousStatus VARCHAR(12);
+    DECLARE idBlock INT;
     
     SET currentPosition = (SELECT positionInColumn FROM Task WHERE idTask = targetTaskId);
     SET previousStatus = (SELECT status FROM Task WHERE idTask = targetTaskId);
+    SET idBlock = (SELECT fkBlock FROM Task WHERE idTask = targetTaskId);
 	
     -- Updating the position of all tasks in the previous column
-	UPDATE Task SET positionInColumn = positionInColumn - 1 WHERE idTask != targetTaskId AND status = previousStatus AND positionInColumn > currentPosition;
+	UPDATE Task SET positionInColumn = positionInColumn - 1 WHERE idTask != targetTaskId AND status = previousStatus AND positionInColumn > currentPosition AND fkBlock = idBlock;
     
     -- Updating the position of all tasks in the new column
-    UPDATE Task SET positionInColumn = positionInColumn + 1 WHERE idTask != targetTaskId AND status = newStatus AND positionInColumn >= positionInNewColumn;
+    UPDATE Task SET positionInColumn = positionInColumn + 1 WHERE idTask != targetTaskId AND status = newStatus AND positionInColumn >= positionInNewColumn AND fkBlock = idBlock;
     
     UPDATE Task SET status = newStatus, positionInColumn = positionInNewColumn WHERE idTask = targetTaskId;
 END
 // DELIMITER ;
+
+SELECT * FROM Task;

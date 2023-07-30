@@ -11,8 +11,6 @@ export async function getBlockByIdController(request: Request, response: Respons
 
 		const block = await getBlockById(parseInt(idBlock));
 
-		console.log(block);
-
 		const blockExists = Array.isArray(block) && block.length;
 
 		if(!blockExists) {

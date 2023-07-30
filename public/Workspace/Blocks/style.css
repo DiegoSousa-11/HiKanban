@@ -82,6 +82,23 @@ section > button:hover {
     padding: 1rem;
 }
 
+.tasksContainer > div .taskDate {
+    display: flex;
+    align-items: center;
+
+    gap: .5rem;
+    padding: .2rem;
+    margin-top: .2rem;
+}
+
+.taskDate p {
+    font-size: .9rem;
+}
+
+.taskDate .iconify {
+    margin-bottom: .12rem;
+}
+
 .tasksContainer .draggable {
 	outline: 2px dashed var(--text);
     outline-offset: -3px;
@@ -89,7 +106,7 @@ section > button:hover {
 	background-color: transparent;
 }
 
-.draggable h4 {
+.draggable * {
 	visibility: hidden;
 }
 
@@ -125,4 +142,134 @@ section > button:hover {
 .endDate input::-webkit-calendar-picker-indicator {
 	cursor: pointer;
 	background: url('https://api.iconify.design/fa6-regular/calendar.svg?color=rgba(0%2C%200%2C%200%2C%200.3137254901960784)') no-repeat center center / contain;
+}
+
+.taskModal .modalContainer{
+    min-width: 25vw;
+}
+
+.taskModal .modalContainer {
+    align-items: start;
+}
+
+.taskModal h1 {
+    padding: .2rem .6rem;
+}
+
+.taskModal h1:focus {
+    outline-color: #F8616150;
+    background-color: #f5f5f5;
+}
+
+.taskModal form {
+    margin-top: 1.5rem;
+}
+
+.taskModal .status{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    margin-top: .6rem;
+
+    font-size: 1rem;
+    color: var(--text);
+}
+
+.taskModal .status .iconify {
+    font-size: 1.5rem;
+}
+
+.endDateInformation, .taskModalButtons {
+    gap: 1.5rem;
+
+    border: 0;
+    border-radius: 0;
+}
+
+.endDateInformation label {
+    cursor: pointer;
+    user-select: none;
+
+    display: flex;
+    padding: .5rem 1rem;
+    gap: .5rem;
+
+    margin: 0;
+
+    color: #666;
+    background-color: #ECECEC;
+    border-radius: 5px;
+}
+
+.endDateInformation .iconify {
+    margin-left: auto;
+}
+
+.taskModal textarea {
+    font-size: 1rem;
+}
+
+.taskModal .description {
+    margin-bottom: 0;
+}
+
+#taskDescriptionLock {
+    cursor: pointer;
+    position: relative;
+
+    margin-left: auto;
+    margin-right: 1rem;
+
+    bottom: 2.4rem;
+}
+
+.taskModalButtons {
+    display: flex;
+    justify-content: center;
+}
+
+.taskModalButtons button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: fit-content;
+    margin: 0;
+    padding: .9rem;
+}
+
+.trashButton {
+    height: 100%;
+}
+
+.taskModalButtons .iconify {
+    margin: 0;
+    padding: 0;
+
+    font-size: 1.5rem;
+    color: #FFF;
+
+    transition: .5s;
+}
+
+.saveButton {
+    background-color: #20AC7A;
+}
+
+.saveButton:hover {
+    border-color: #20AC7A;
+}
+
+.saveButton:hover .iconify {
+    color: #20AC7A;
+}
+
+.trashButton:hover .iconify {
+    color: var(--red);
+}
+
+.taskModalEndDate {
+    visibility: hidden;
+    width: 0;
+    padding: 0;
 }

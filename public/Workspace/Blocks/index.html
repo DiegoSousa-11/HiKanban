@@ -11,11 +11,13 @@
 	<script src="../../js/blocks/loadBlockData.js" defer></script>
 	<script src="../../js/user/authenticate.js" defer></script>
 	<script src="../../js/utils/toast.js" defer></script>
+    <script src="../../js/tasks/updateTaskData.js" defer></script>
 	<script src="../../js/tasks/listTasks.js" defer></script>
 	<script src="../../js/tasks/createTask.js" defer></script>
-	<script src="../../js/tasks/createTaskModalController.js" defer></script>
+	<script src="../../js/modals/createTaskModalController.js" defer></script>
     <script src="../../js/tasks/dragAndDrop.js" defer></script>
 	<script src="../../js/tasks/updateTaskPosition.js" defer></script>
+	<script src="../../js/modals/modalTaskController.js" defer></script>
     <title>HiKanban! | Blocos</title>
 </head>
 <body>
@@ -52,7 +54,7 @@
 						
                     </div>
 
-                    <button onclick="openModal('TO_DO')">
+                    <button onclick="openCreateTaskModal('TO_DO')">
                         <span class="iconify" data-icon="mingcute:add-fill"></span>
                         Adicionar tarefa
                     </button>
@@ -65,7 +67,7 @@
                         
                     </div>
 
-                    <button onclick="openModal('IN_PROGRESS')">
+                    <button onclick="openCreateTaskModal('IN_PROGRESS')">
                         <span class="iconify" data-icon="mingcute:add-fill"></span>
                         Adicionar tarefa
                     </button>
@@ -78,7 +80,7 @@
                         
                     </div>
 
-                    <button onclick="openModal('FINISHED')">
+                    <button onclick="openCreateTaskModal('FINISHED')">
                         <span class="iconify" data-icon="mingcute:add-fill"></span>
                         Adicionar tarefa
                     </button>
@@ -95,8 +97,8 @@
 				</div>
 	
 				<h1></h1>
-	
-				<form>
+
+                <form>
 	
 					<label>Nome</label>
 					<div>
@@ -115,6 +117,47 @@
 					</div>
 	
 					<button>Criar tarefa</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div id="taskModal" class="modal taskModal">
+		<div class="overlay">
+			<div class="modalContainer">
+                <div id="closeTaskModalButton">
+					<span class="iconify" data-icon="mingcute:close-fill"></span>
+				</div>
+
+				<h1 id="nameTaskModal" contenteditable="true">-</h1>
+
+                <div class="status">
+					<span class="iconify" data-icon="fe:line-chart"></span>
+                    <h4>Status: -</h4>
+                </div>
+                
+				<form>
+                    <div class="endDateInformation">
+                        <label id="endDate" for="endDateInput">
+                            <span class="iconify" data-icon="mingcute:time-line"></span>
+                            <p>-</p>
+                        </label>
+
+                        <input id="endDateInput" type="datetime-local" class="taskModalEndDate">
+                        
+                        <label id="timeReaming">-</label>
+                    </div>
+                    
+					<div class="description">
+                        <label>Descrição</label>
+						<textarea disabled name="description" placeholder="Adicione uma descrição" rows="5"></textarea>
+                        <span onclick="changeTextAreaEditionMode()" id="taskDescriptionLock" class="iconify" data-icon="material-symbols:lock"></span>
+					</div>
+	
+					<div class="taskModalButtons">
+                        <button class="saveButton"><span class="iconify" data-icon="fluent:save-28-filled"></span></button>
+                        <button class="trashButton"><span class="iconify" data-icon="iconamoon:trash-fill"></span></button>
+                    </div>
 				</form>
 			</div>
 		</div>
