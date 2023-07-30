@@ -5,7 +5,7 @@ const FINISHED_COLUMN = document.getElementById('FINISHED').querySelector('.task
 let tasks = [];
 
 async function listAllTasksByBlockId() {
-	const response = await fetch(`/block/${fkBlock}/listAllTasks`);
+	const response = await fetch(`/block/${idBlock}/listAllTasks`);
 	const data = await response.json();
 
 	tasks = data;

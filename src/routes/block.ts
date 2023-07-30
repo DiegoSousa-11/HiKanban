@@ -4,6 +4,7 @@ import { listAllBlocksController } from '../controllers/block/listAllBlocksContr
 import { createTaskController } from '../controllers/task/createTaskController';
 import { listAllTasksByBlockIdController } from '../controllers/task/listAllTasksByBlockIdController';
 import { getBlockByIdController } from '../controllers/block/getBlockByIdController';
+import { switchBlockToFavoriteController } from '../controllers/block/switchBlockToFavoriteController';
 
 export const blockRoutes = Router();
 
@@ -16,3 +17,5 @@ blockRoutes.get('/listAllBlocks/:fkUser', listAllBlocksController);
 blockRoutes.post('/:blockId/createTask', createTaskController);
 
 blockRoutes.get('/:blockId/listAllTasks', listAllTasksByBlockIdController);
+
+blockRoutes.patch('/:idBlock/switchBlockToFavorite', switchBlockToFavoriteController);

@@ -16,7 +16,7 @@ async function createTask(column) {
 			status: column
 		}
 
-		const response = await fetch(`/block/${fkBlock}/createTask`, {
+		const response = await fetch(`/block/${idBlock}/createTask`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'

@@ -1,10 +1,10 @@
-const fkBlock = getQueryParams('idBlock');
+const idBlock = getQueryParams('idBlock');
 const blockHeader = document.getElementById('blockHeader');
 
-window.addEventListener('load', () => getBlockData(fkBlock));
+window.addEventListener('load', () => getBlockData(idBlock));
 
 async function getBlockData() {
-	const response = await fetch(`/block/${fkBlock}`);
+	const response = await fetch(`/block/${idBlock}`);
 	const data = await response.json();
 
 	displayBlockData(data[0]);
@@ -12,9 +12,13 @@ async function getBlockData() {
 }
 
 function displayBlockData(block) {
+	const isFavorite = Boolean(block.isFavorite.data[0]);
+
+	let icon = isFavorite ? 'ic:round-star' : 'ic:round-star-border';
+
 	blockHeader.innerHTML = `
 		${block.name}
-		${block.isFavorite ? '<span class="iconify" data-icon="ic:round-star">' : '<span class="iconify" data-icon="ic:round-star-border">'}
+		<span id="isFavoriteIcon" onclick=switchBlockToFavorite() class="iconify" data-icon="${icon}">
 	`;
 }
 

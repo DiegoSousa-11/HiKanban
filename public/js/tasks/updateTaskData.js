@@ -19,6 +19,8 @@ async function updateTaskData(taskId) {
     if(response.ok) {
 		createToast('Tarefa atualizada com sucesso!', 'fe:check', '#006432');
         updateTaskList(editedData, taskIndex);
+    } else {
+        showErrorToast('Não foi possível atualizar a tarefa!');
     }
 }
 

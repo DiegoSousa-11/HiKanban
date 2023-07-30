@@ -2,7 +2,7 @@ window.addEventListener('load', () => document.head.innerHTML += `<link rel="sty
 
 function createToast(text, icon, color) {
 	if(document.getElementById('toast'))
-        return;
+        removeToast();
 
     progress = 0;
 
