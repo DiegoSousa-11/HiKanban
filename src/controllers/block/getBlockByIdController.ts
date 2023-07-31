@@ -3,13 +3,13 @@ import { getBlockById } from '../../useCases/block/getBlockById';
 
 export async function getBlockByIdController(request: Request, response: Response) {
 	try {
-		const { idBlock } = request.params;
+		const { idBlock, idUser } = request.params;
 
-		if(!idBlock) {
-			return response.status(400).json({ message: 'The block id is not defined' });
+		if(!idBlock || !idUser) {
+			return response.status(400).json({ message: 'The block id or user id is undefined' });
 		}
 
-		const block = await getBlockById(parseInt(idBlock));
+		const block = await getBlockById(parseInt(idBlock), parseInt(idBlock));
 
 		const blockExists = Array.isArray(block) && block.length;
 

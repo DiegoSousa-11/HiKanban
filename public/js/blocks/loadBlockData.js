@@ -4,11 +4,17 @@ const blockHeader = document.getElementById('blockHeader');
 window.addEventListener('load', () => getBlockData(idBlock));
 
 async function getBlockData() {
-	const response = await fetch(`/block/${idBlock}`);
+	const idUser = getUserId();
+	const response = await fetch(`/block/user/${idUser}/${idBlock}`);
 	const data = await response.json();
 
-	displayBlockData(data[0]);
-	listAllTasksByBlockId();
+	if(response.ok) {
+		displayBlockData(data[0]);
+		listAllTasksByBlockId();
+	} else {
+		document.querySelector('main h1').innerHTML = 'Erro 404 - Bloco não encontrado!';
+		document.querySelector('main div').remove();
+	}
 }
 
 function displayBlockData(block) {

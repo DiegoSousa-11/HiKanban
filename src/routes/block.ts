@@ -10,7 +10,7 @@ export const blockRoutes = Router();
 
 blockRoutes.post('/', createBlockController);
 
-blockRoutes.get('/:idBlock', getBlockByIdController);
+blockRoutes.get('/user/:idUser/:idBlock', getBlockByIdController);
 
 blockRoutes.get('/listAllBlocks/:fkUser', listAllBlocksController);
 

@@ -8,6 +8,8 @@ async function listAllTasksByBlockId() {
 	const response = await fetch(`/block/${idBlock}/listAllTasks`);
 	const data = await response.json();
 
+	console.log(data);
+
 	tasks = data;
 
 	displayAllTasks(data);
