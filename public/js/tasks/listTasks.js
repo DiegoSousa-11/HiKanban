@@ -8,8 +8,6 @@ async function listAllTasksByBlockId() {
 	const response = await fetch(`/block/${idBlock}/listAllTasks`);
 	const data = await response.json();
 
-	console.log(data);
-
 	tasks = data;
 
 	displayAllTasks(data);
@@ -24,7 +22,7 @@ function displayAllTasks() {
 		let taskDateSection = `
 			<div style='color: ${alertColor}' class='taskDate'>
 				<span class="iconify" data-icon="icon-park-outline:time"></span>
-				<p>${formatDate(new Date(task.endDate))} - ${timeReaming}</p>
+				<p>${formatDate(new Date(task.endDate))}${timeReaming ? ' - ' + timeReaming : ''}</p>
 			</div>
 		`; 
 
@@ -71,6 +69,8 @@ function getTimeReamingAndAlertColor(date) {
 	const timeDiffInMiliseconds = new Date(date) - now;
 
 	const milisecondsPerDay = 1000 * 60 * 60 * 24;
+	const milisecondsPerHour = 1000 * 60 * 60;
+	const differenceInHours = Math.floor(timeDiffInMiliseconds / milisecondsPerHour);
 	const differenceInDays = Math.floor(timeDiffInMiliseconds / milisecondsPerDay);
 
 	let alertColor = '#666666';
@@ -86,12 +86,20 @@ function getTimeReamingAndAlertColor(date) {
 	if(differenceInDays < 31) {
 		if(differenceInDays < 0) {
 			if(differenceInDays > -31) {
-				timeReaming = `Atrasada ${Math.abs(differenceInDays)} dias`;
+				if(differenceInDays === -1) {
+					timeReaming = `Atrasada ${Math.abs(differenceInHours)} horas`;
+				} else {
+					timeReaming = `Atrasada ${Math.abs(differenceInDays)} dias`;
+				}
 			} else {
 				timeReaming = `Atrasada + de 1 mês`;
 			}
 		} else {
-			timeReaming = `Faltam ${differenceInDays} dias`;
+			if(differenceInDays === 0) {
+				timeReaming = `Faltam ${differenceInHours} horas`;
+			} else {
+				timeReaming = `Faltam ${differenceInDays} dias`;
+			}
 		}
 	}
 

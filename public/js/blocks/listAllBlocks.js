@@ -1,13 +1,17 @@
 const blocksContainer = document.getElementById('blocksContainer');
 
 window.addEventListener('load', () => {
-	getUserBlocks();
+	const pageName = window.location.pathname.replaceAll('/', '');
+	const onlyFavorites = pageName === 'Favorites';
+
+	getUserBlocks(onlyFavorites);
 });
 
-async function getUserBlocks() {
+async function getUserBlocks(onlyFavorites) {
 	const userId = getUserId();
 
-	const response = await fetch(`/block/listAllBlocks/${userId}`);
+	const url = onlyFavorites ? `/block/listFavoriteBlocks/${userId}` : `/block/listAllBlocks/${userId}`;
+	const response = await fetch(url);
 	const data = await response.json();
 
 	if(data.length > 0) {

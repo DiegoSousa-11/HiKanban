@@ -18,7 +18,7 @@ async function getBlockData() {
 }
 
 function displayBlockData(block) {
-	const isFavorite = Boolean(block.isFavorite.data[0]);
+	const isFavorite = Boolean(block.isFavorite);
 
 	let icon = isFavorite ? 'ic:round-star' : 'ic:round-star-border';
 

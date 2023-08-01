@@ -41,6 +41,7 @@ body {
 
 nav a {
     display: flex;
+	color: #B4B4B4;
 }
 
 nav .currentRoute {
